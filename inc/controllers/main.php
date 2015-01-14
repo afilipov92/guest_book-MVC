@@ -1,12 +1,7 @@
 <?php
 
-class MainController {
-
-    public function __construct() {
-        echo __CLASS__ . "<br/>";
-    }
-
+class MainController extends baseController{
     public function indexAction() {
-        echo __METHOD__ . "<br/>";
+        $this->view->turnOn('main/index');
     }
 }

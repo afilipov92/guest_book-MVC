@@ -1,6 +1,5 @@
 <?php
 
-define('DEFAULT_CONTROLLER', 'main');
-require_once('inc/service/router.php');
+require_once('inc/inc.php');
 
 new Router();
