@@ -1,7 +1,6 @@
 <?php
 
 define('DEFAULT_CONTROLLER', 'main');
+define('BASE_URL', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 
-require_once('service/router.php');
-require_once('service/view.php');
-require_once('service/baseController.php');
+require_once('service/autoloaders.php');

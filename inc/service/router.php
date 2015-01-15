@@ -1,19 +1,13 @@
 <?php
 
 class Router {
+    /**
+     * выбирает контроллер и метод контроллера
+     */
     public function __construct() {
         $url = isset($_GET['url']) ? htmlspecialchars(trim($_GET['url'])) : DEFAULT_CONTROLLER;
 
         $parts = explode('/', rtrim($url, '/'));
-
-        $controllerFile = 'inc/controllers/' . $parts[0] . '.php';
-
-        if (file_exists($controllerFile)) {
-            require_once($controllerFile);
-        } else {
-            echo "Такой контроллер не существует";
-            die;
-        }
 
         $controllerName = $parts[0] . 'Controller';
         $controller = new $controllerName();
