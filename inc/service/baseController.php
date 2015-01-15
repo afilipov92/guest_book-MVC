@@ -5,6 +5,7 @@ class BaseController{
 
     public function __construct() {
         $this->view = new View();
+        $this->view->title = get_class($this);
     }
 
     public function indexAction() {

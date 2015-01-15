@@ -2,7 +2,7 @@
 
 class Router {
     public function __construct() {
-        $url = isset($_GET['url']) ? $_GET['url'] : DEFAULT_CONTROLLER;
+        $url = isset($_GET['url']) ? htmlspecialchars(trim($_GET['url'])) : DEFAULT_CONTROLLER;
 
         $parts = explode('/', rtrim($url, '/'));
 
