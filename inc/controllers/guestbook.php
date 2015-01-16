@@ -17,8 +17,6 @@ class GuestBookController extends BaseController {
             }
 
         }
-        //$image = new ImageModel(Captcha::generateCaptcha());
-       // $this->view->gbCaptchaQuestion = $image->send();
         $this->view->switchOn('guestbook/form');
     }
 }

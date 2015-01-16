@@ -36,7 +36,7 @@
             <label class="col-md-4 control-label" for="captcha">Защита от роботов</label>
             <div class="col-md-4">
                 <div class="input-group">
-                    <span class="input-group-addon" style="padding: 0;"><img src="<?php /*что-то написать*/ ?>" /></span>
+                    <span class="input-group-addon" style="padding: 0;"><img src="captcha/show" /></span>
                     <input id="captcha" name="captcha" class="form-control" placeholder="Введите ответ" type="text" required="">
                 </div>
                 <p class="help-block" data-name="captcha"></p>
