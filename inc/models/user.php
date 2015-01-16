@@ -14,9 +14,9 @@ class UserModel extends Model {
      * @param array $data
      * @return bool
      */
-    public static  function find(array $data){
-        foreach(self::$users as $a){
-            if ($a['login'] == $data['login'] && $a['password'] == $data['password']){
+    public static function find(array $data) {
+        foreach (self::$users as $a) {
+            if ($a['login'] == $data['login'] && $a['password'] == $data['password']) {
                 return $a;
             }
         }

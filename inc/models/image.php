@@ -7,24 +7,30 @@ class ImageModel extends Model {
     protected $imgHeight = 30;
     protected $text;
 
+    /**
+     * @param string $text
+     */
     public function __construct($text = '') {
         $this->text = $text;
     }
 
-    public function setText($text) {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    protected function addNoise($img, $colLine1, $colLine2){
+    /**
+     * добавление шума
+     * @param $img
+     * @param $colLine1
+     * @param $colLine2
+     */
+    protected function addNoise($img, $colLine1, $colLine2) {
         $lineNum = rand($colLine1, $colLine2);
-        for ($i=0; $i<$lineNum; $i++){
-            $color =  imagecolorallocate($img, rand(150,255), rand(150, 255), rand(150, 255));
+        for ($i = 0; $i < $lineNum; $i++) {
+            $color = imagecolorallocate($img, rand(150, 255), rand(150, 255), rand(150, 255));
             imageline($img, rand(0, 20), rand(1, 50), rand(150, 180), rand(1, 50), $color);
         }
     }
 
+    /**
+     * отрисовка каптчи
+     */
     public function send() {
         // Создаем холст
         $img = imagecreate($this->imgWidth, $this->imgHeight);

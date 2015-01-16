@@ -1,17 +1,23 @@
 <?php
 
 class GuestBookController extends BaseController {
-    public function indexAction(){
+    /**
+     * обработка формы и её отрисовка
+     */
+    public function indexAction() {
         $message = new MessageGBModel();
-        if($this->isPost()){
+        if ($this->isPost()) {
             $message->setAttributes($_POST);
             $captcha = Captcha::isValidCaptcha($_POST['captcha']);
-            if($message->isFormVaild() AND $captcha){
-                $message->messageText = "";
-                echo "Сообщение сохраненно";
+            if ($message->isFormVaild() AND $captcha) {
+                if ($message->insertMessage()) {
+                    echo "Сообщение сохраненно";
+                } else {
+                    echo "Ошибка сохранения";
+                }
             } else {
                 echo "Данные не валидны";
-                if(!$captcha){
+                if (!$captcha) {
                     echo "Каптча не валидна";
                 }
             }

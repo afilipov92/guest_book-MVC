@@ -34,11 +34,11 @@ class BaseController {
      * @param $url
      */
     public function redirect($url) {
-        header('Location: '.$url);
+        header('Location: ' . $url);
         die;
     }
 
-    public function isPost(){
+    public function isPost() {
         return !empty($_POST);
     }
 

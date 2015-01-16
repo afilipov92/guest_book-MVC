@@ -7,14 +7,14 @@
 <body>
 <div class="auth-block">
     <?php
-    if($this->session->isLoggedIn()){
+    if ($this->session->isLoggedIn()) {
         echo $this->session->getName();
-        echo '<a href="'.'auth/logout'.'">Выйти</a>';
+        echo '<a href="' . 'auth/logout' . '">Выйти</a>';
     } else {
-        echo '<a href="'.'auth/login'.'">Войти</a>';
+        echo '<a href="' . 'auth/login' . '">Войти</a>';
     }
     ?>
 </div>
-    <h1>Main page - index</h1>
+<h1>Main page - index</h1>
 </body>
 </html>

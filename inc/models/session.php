@@ -1,6 +1,6 @@
 <?php
 
-class SessionModel extends Model{
+class SessionModel extends Model {
     /**
      * @var хранит данные о пользователе
      */
@@ -9,7 +9,7 @@ class SessionModel extends Model{
     /**
      * создает сессию
      */
-    public function __construct(){
+    public function __construct() {
         session_start();
     }
 
@@ -17,7 +17,7 @@ class SessionModel extends Model{
      * проверяет залогинен ли пользователь
      * @return bool
      */
-    public function isLoggedIn(){
+    public function isLoggedIn() {
         return isset($_SESSION['login']);
     }
 
@@ -27,7 +27,7 @@ class SessionModel extends Model{
      * @param $password
      * @return bool
      */
-    public function login($login, $password){
+    public function login($login, $password) {
         $this->user = UserModel::find(array('login' => $login, 'password' => $password));
         return $this->user;
     }
@@ -35,7 +35,7 @@ class SessionModel extends Model{
     /**
      * разрушает все данные сессии
      */
-    public function logout(){
+    public function logout() {
         session_destroy();
         $this->user = false;
     }
@@ -44,16 +44,15 @@ class SessionModel extends Model{
      * возвращает логин пользователя, если он залогинен
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->isLoggedIn() ? $_SESSION['login'] : '';
     }
 
     /**
      * заносит данные в сессию
      */
-    public function __destruct(){
-        if($this->user){
+    public function __destruct() {
+        if ($this->user) {
             $_SESSION['login'] = $this->user['login'];
         }
     }
