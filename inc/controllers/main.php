@@ -1,10 +1,10 @@
 <?php
 
-class MainController extends baseController {
+class MainController extends BaseController {
     /**
      * подгружает index.php из main
      */
     public function indexAction() {
-        $this->view->turnOn('main/index');
+        $this->view->switchOn('main/index');
     }
 }

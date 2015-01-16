@@ -1,6 +1,6 @@
 <?php
 
-class SessionModel {
+class SessionModel extends Model{
     /**
      * @var хранит данные о пользователе
      */

@@ -37,4 +37,21 @@ class BaseController {
         header('Location: '.$url);
         die;
     }
+
+    public function isPost(){
+        return !empty($_POST);
+    }
+
+    /**
+     * Возвращает URL для указанных параметров
+     * Число параметров - не менее одного
+     * Первый - имя контроллера
+     * Остальные в порядке использования - имя метода, значения параметров
+     * @param $controller
+     * @return mixed
+     */
+    public static function url($controller) {
+        $args = func_get_args();
+        return BASE_URL . implode("/", $args);
+    }
 }

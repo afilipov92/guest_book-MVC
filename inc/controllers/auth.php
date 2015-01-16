@@ -22,7 +22,7 @@ class AuthController extends BaseController {
                 $this->view->msg = "Ошибка входа";
             }
         }
-        $this->view->turnOn('auth/login');
+        $this->view->switchOn('auth/login');
     }
 
     /**

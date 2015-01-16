@@ -5,7 +5,7 @@ class Router {
      * выбирает контроллер и метод контроллера
      */
     public function __construct() {
-        $url = isset($_GET['url']) ? htmlspecialchars(trim($_GET['url'])) : DEFAULT_CONTROLLER;
+        $url = isset($_GET['url']) ? trim($_GET['url']) : DEFAULT_CONTROLLER;
 
         $parts = explode('/', rtrim($url, '/'));
 
