@@ -18,7 +18,7 @@ class SessionModel extends Model {
      * @return bool
      */
     public function isLoggedIn() {
-        return isset($_SESSION['login']);
+        return isset($_SESSION['userName']);
     }
 
     /**
@@ -27,8 +27,9 @@ class SessionModel extends Model {
      * @param $password
      * @return bool
      */
-    public function login($login, $password) {
-        $this->user = UserModel::find(array('login' => $login, 'password' => $password));
+    public function login($userName, $password) {
+        $ob = new UserModel();
+        $this->user = $ob->requestSelectUser($userName, md5($password));
         return $this->user;
     }
 
@@ -45,7 +46,7 @@ class SessionModel extends Model {
      * @return string
      */
     public function getName() {
-        return $this->isLoggedIn() ? $_SESSION['login'] : '';
+        return $this->isLoggedIn() ? $_SESSION['userName'] : '';
     }
 
     /**
@@ -53,7 +54,7 @@ class SessionModel extends Model {
      */
     public function __destruct() {
         if ($this->user) {
-            $_SESSION['login'] = $this->user['login'];
+            $_SESSION['userName'] = $this->user['userName'];
         }
     }
 }

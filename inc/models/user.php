@@ -10,16 +10,19 @@ class UserModel extends Model {
     );
 
     /**
-     * ищет пользователя по логину и паролю
-     * @param array $data
-     * @return bool
+     * выборка по пользователю и паролю
+     * @param $userName
+     * @param $pass
+     * @return bool|mixed
      */
-    public static function find(array $data) {
-        foreach (self::$users as $a) {
-            if ($a['login'] == $data['login'] && $a['password'] == $data['password']) {
-                return $a;
-            }
+    public function requestSelectUser($userName, $pass){
+        $sth = $this->db->prepare('SELECT * FROM ' . DB_PREFIX . 'users WHERE userName = :userName AND password = :pass');
+        $sth->execute(array('userName' => $userName, 'pass' => $pass));
+        $mas = $sth->fetch(PDO::FETCH_ASSOC);
+        if(!empty($mas)){
+            return $mas;
+        } else{
+            return false;
         }
-        return false;
     }
 }

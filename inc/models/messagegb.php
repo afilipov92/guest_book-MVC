@@ -17,24 +17,20 @@ class MessageGBModel extends Model {
      * @return bool
      */
     public function isFormVaild() {
-        $resp = true;
         $this->errors = array();
 
         if (preg_match('/^[a-zA-Z][a-zA-Z0-9-_\.]{5,20}$/', $this->userName) == 0) {
-            $resp = false;
             $this->errors['userName'] = 'Проверьте ввод имени';
         }
 
         if (preg_match('/^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/', $this->userEmail) == 0) {
-            $resp = false;
-            $errors['userEmail'] = 'Проверьте ввод email';
+            $this->errors['userEmail'] = 'Проверьте ввод email';
         }
 
         if (strlen($this->messageText) < 50) {
-            $resp = false;
-            $errors['messageText'] = 'Сообщение должно содержать от 50 символов';
+            $this->errors['messageText'] = 'Сообщение должно содержать от 50 символов';
         }
-        return $resp;
+        return !empty($this->errors);
     }
 
     /**
@@ -43,17 +39,12 @@ class MessageGBModel extends Model {
      */
     public function insertMessage() {
         $ins = $this->db->prepare('INSERT INTO ' . DB_PREFIX . 'gb_messages (userName, userEmail, messageText, date) VALUES (:userName, :userEmail, :messageText, :date)');
-        $a = $ins->execute(array(
+        return $ins->execute(array(
             'userName' => $this->userName,
             'messageText' => $this->messageText,
             'userEmail' => $this->userEmail,
             'date' => $this->date
         ));
-        if($a){
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
