@@ -16,13 +16,14 @@ class GuestBookController extends BaseController {
                     echo "Ошибка сохранения";
                 }
             } else {
-                echo "Данные не валидны";
+                $this->view->gbErrors = $message->getErrors();
                 if (!$captcha) {
-                    echo "Каптча не валидна";
+                    $this->view->gbErrors['captcha'] = 'Неверный ответ';
                 }
             }
 
         }
+        $this->view->msg = $message;
         $this->view->switchOn('guestbook/form');
     }
 }

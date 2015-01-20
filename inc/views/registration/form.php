@@ -1,16 +1,17 @@
+<?php var_dump($this->msg); ?>
 <div id="block">
     <p align="center" ><b>Форма регистрации</b></p>
     <form name="form4" class="form1" method="post">
         <div>
             <label for="userName">Логин *:</label>
             <br/>
-            <input id="userName" type="text" name="userName" required value="">
+            <input id="userName" type="text" name="userName" required value="<?= $this->msg->userName ?>">
             <p data-name="userName"></p>
         </div>
         <div>
             <label for="userEmail">E-mail адрес *:</label>
             <br/>
-            <input id="userEmail" type="email" name="userEmail" required value="">
+            <input id="userEmail" type="email" name="userEmail" required value="<?= $this->msg->userEmail ?>">
             <p data-name="userEmail"></p>
         </div>
         <div>
@@ -40,3 +41,18 @@
         </div>
     </form>
 </div>
+
+<?php
+if (isset($this->gbErrors) AND !empty($this->gbErrors)) {
+    ?>
+    <div class="form-group">
+        <div class="alert alert-warning">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <ul>
+                <?php foreach ($this->gbErrors as $fieldName => $error) { ?>
+                    <li><strong><?= $fieldName ?></strong> <?= $error ?></li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+<?php } ?>

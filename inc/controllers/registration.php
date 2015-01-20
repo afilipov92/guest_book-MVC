@@ -12,21 +12,22 @@ class RegistrationController extends BaseController {
             if ($newUser->isFormVaild() AND $captcha) {
                 if(MailModel::goMail($newUser->userName , $newUser->userEmail)){
                     if ($newUser->addUser()) {
-                        $msg = "Вы успешно зарегистрировались";
+                        echo  "Вы успешно зарегистрировались";
                     } else {
-                        $msg = "Ошиба регистрации";
+                        echo  "Ошиба регистрации";
                     }
                 } else {
-                    $msg = "Ошибка отправки письма";
+                    $this->view->gbErrors['mail'] = "Ошибка отправки письма";
                 }
             } else {
-                $msg = "Не верные данные при регистрации";
+                $this->view->gbErrors = $newUser->getErrors();
                 if (!$captcha) {
-                    $msg .= "Каптча не валидна";
+                    $this->view->gbErrors['captcha']= "Каптча не валидна";
                 }
             }
-            echo $msg;
+           // echo $msg;
         }
+        $this->view->msg = $newUser;
         $this->view->switchOn('registration/form');
     }
 }

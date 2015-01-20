@@ -10,7 +10,7 @@
 
             <div class="col-md-4">
                 <input id="userName" name="userName" type="text" placeholder="Представьтесь"
-                       class="form-control input-md" required="" value="<?= @$this->gbUserName ?>">
+                       class="form-control input-md" required="" value="<?= $this->msg->userName ?>">
             </div>
             <p class="help-block" data-name="userName"></p>
         </div>
@@ -21,7 +21,7 @@
 
             <div class="col-md-4">
                 <input id="userEmail" name="userEmail" type="email" placeholder="Оставьте ваш e-mail"
-                       class="form-control input-md" required="" value="<?= @$this->gbUserEmail ?>">
+                       class="form-control input-md" required="" value="<?= $this->msg->userEmail ?>">
             </div>
             <p class="help-block" data-name="userEmail"></p>
         </div>
@@ -32,7 +32,7 @@
 
             <div class="col-md-4">
                 <textarea class="form-control" id="messageText" name="messageText"
-                          placeholder="Введите ваше сообщение"><?= @$this->gbMessage ?></textarea>
+                          placeholder="Введите ваше сообщение"><?= $this->msg->messageText ?></textarea>
             </div>
             <p class="help-block" data-name="messageText"></p>
         </div>
@@ -60,6 +60,21 @@
                 <button id="sendBtn" name="sendBtn" type="submit" class="btn btn-success">Отправить</button>
             </div>
         </div>
+
+        <?php
+        if (isset($this->gbErrors) AND !empty($this->gbErrors)) {
+            ?>
+            <div class="form-group">
+                <div class="alert alert-warning">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <ul>
+                        <?php foreach ($this->gbErrors as $fieldName => $error) { ?>
+                            <li><strong><?= $fieldName ?></strong> <?= $error ?></li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        <?php } ?>
 
     </fieldset>
 </form>

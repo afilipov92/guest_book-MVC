@@ -5,37 +5,29 @@ class RegistrationModel extends Model {
     public $userEmail = "";
     public $password = "";
     public $passwordConfirm = "";
-    protected $errors;
 
     public  function isFormVaild(){
-        $resp = true;
         $this->errors = array();
         if(preg_match('/^[a-zA-Z][a-zA-Z0-9-_\.]{5,20}$/', $this->userName) == 0){
-            $resp = false;
             $this->errors['userName'] = 'Логин должен быть от 5 до 20 символов';
         }
         if($this->requestSelectUserName($this->userName) != false){
-            $resp = false;
             $this->errors['userName'] = 'Пользователь с таким логином уже существует';
         }
         if($this->requestSelectUserEmail($this->userEmail) != false){
-            $resp = false;
             $this->errors['userEmail'] = 'Пользователь с таким E-mail уже существует';
         }
         if(preg_match('/^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/', $this->userEmail) == 0){
-            $resp = false;
             $this->errors['userEmail'] = 'Проверьте ввод email';
         }
         if(preg_match('/(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/', $this->password) == 0){
-            $resp = false;
             $this->errors['password'] = "Проверьте ввод пароля (пароль должен быть от 6 символов, должны присутствовать:\n
             загланвые буквы, цифры, допускаются спец символы)";
         }
         if($this->password != $this->passwordConfirm){
-            $resp = false;
             $errors['password'] = 'Пароли не совпадают';
         }
-        return $resp;
+        return empty($this->errors);
     }
 
     /**

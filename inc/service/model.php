@@ -2,6 +2,7 @@
 
 class Model {
     protected $db;
+    protected $errors;
 
     public function __construct() {
         try {
@@ -19,6 +20,10 @@ class Model {
         foreach ($arr as $key => $val) {
             $this->$key = $val;
         }
+    }
+
+    public function getErrors(){
+        return $this->errors;
     }
 
 }

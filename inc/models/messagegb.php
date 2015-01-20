@@ -5,7 +5,6 @@ class MessageGBModel extends Model {
     public $userEmail = "";
     public $messageText = "";
     public $date;
-    protected $errors;
 
     public function __construct() {
         parent::__construct();
@@ -30,7 +29,7 @@ class MessageGBModel extends Model {
         if (strlen($this->messageText) < 50) {
             $this->errors['messageText'] = 'Сообщение должно содержать от 50 символов';
         }
-        return !empty($this->errors);
+        return empty($this->errors);
     }
 
     /**
