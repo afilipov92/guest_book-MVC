@@ -1,4 +1,5 @@
 <?php
+
 class BaseController {
     /**
      * @var View
@@ -8,6 +9,7 @@ class BaseController {
      * @var SessionModel
      */
     protected $session;
+
     /**
      * создает объекты View и SessionModel
      * в view->session заносит экзепляр session
@@ -19,12 +21,14 @@ class BaseController {
         $this->view->session = $this->session;
         $this->view->title = get_class($this);
     }
+
     /**
      * метод по умолчанию
      */
     public function indexAction() {
         echo __METHOD__ . "<br/>";
     }
+
     /**
      * редиректит на переданный url
      * @param $url
@@ -33,9 +37,11 @@ class BaseController {
         header('Location: ' . $url);
         die;
     }
+
     public function isPost() {
         return !empty($_POST);
     }
+
     /**
      * Возвращает URL для указанных параметров
      * Число параметров - не менее одного

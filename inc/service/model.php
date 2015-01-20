@@ -22,7 +22,7 @@ class Model {
         }
     }
 
-    public function getErrors(){
+    public function getErrors() {
         return $this->errors;
     }
 

@@ -15,13 +15,13 @@ class UserModel extends Model {
      * @param $pass
      * @return bool|mixed
      */
-    public function requestSelectUser($userName, $pass){
+    public function requestSelectUser($userName, $pass) {
         $sth = $this->db->prepare('SELECT * FROM ' . DB_PREFIX . 'users WHERE userName = :userName AND password = :pass');
         $sth->execute(array('userName' => $userName, 'pass' => $pass));
         $mas = $sth->fetch(PDO::FETCH_ASSOC);
-        if(!empty($mas)){
+        if (!empty($mas)) {
             return $mas;
-        } else{
+        } else {
             return false;
         }
     }

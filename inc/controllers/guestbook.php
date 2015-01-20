@@ -4,16 +4,17 @@ class GuestBookController extends BaseController {
     /**
      * обработка формы и её отрисовка
      */
-    public function indexAction() {
+    public function indexAction($page = 1) {
         $message = new MessageGBModel();
+        $this->view->result = "";
         if ($this->isPost()) {
             $message->setAttributes($_POST);
             $captcha = Captcha::isValidCaptcha($_POST['captcha']);
             if ($message->isFormVaild() AND $captcha) {
                 if ($message->insertMessage()) {
-                    echo "Сообщение сохраненно";
+                    $this->view->result = "Сообщение сохраненно";
                 } else {
-                    echo "Ошибка сохранения";
+                    $this->view->result = "Ошибка сохранения";
                 }
             } else {
                 $this->view->gbErrors = $message->getErrors();
@@ -23,7 +24,8 @@ class GuestBookController extends BaseController {
             }
 
         }
+        $this->view->messages = $message->getItemsForPage($page);
         $this->view->msg = $message;
-        $this->view->switchOn('guestbook/form');
+        $this->view->switchOn('guestbook/index');
     }
 }

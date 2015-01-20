@@ -6,25 +6,25 @@ class RegistrationModel extends Model {
     public $password = "";
     public $passwordConfirm = "";
 
-    public  function isFormVaild(){
+    public function isFormVaild() {
         $this->errors = array();
-        if(preg_match('/^[a-zA-Z][a-zA-Z0-9-_\.]{5,20}$/', $this->userName) == 0){
+        if (preg_match('/^[a-zA-Z][a-zA-Z0-9-_\.]{5,20}$/', $this->userName) == 0) {
             $this->errors['userName'] = 'Логин должен быть от 5 до 20 символов';
         }
-        if($this->requestSelectUserName($this->userName) != false){
+        if ($this->requestSelectUserName($this->userName) != false) {
             $this->errors['userName'] = 'Пользователь с таким логином уже существует';
         }
-        if($this->requestSelectUserEmail($this->userEmail) != false){
+        if ($this->requestSelectUserEmail($this->userEmail) != false) {
             $this->errors['userEmail'] = 'Пользователь с таким E-mail уже существует';
         }
-        if(preg_match('/^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/', $this->userEmail) == 0){
+        if (preg_match('/^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/', $this->userEmail) == 0) {
             $this->errors['userEmail'] = 'Проверьте ввод email';
         }
-        if(preg_match('/(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/', $this->password) == 0){
+        if (preg_match('/(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/', $this->password) == 0) {
             $this->errors['password'] = "Проверьте ввод пароля (пароль должен быть от 6 символов, должны присутствовать:\n
             загланвые буквы, цифры, допускаются спец символы)";
         }
-        if($this->password != $this->passwordConfirm){
+        if ($this->password != $this->passwordConfirm) {
             $errors['password'] = 'Пароли не совпадают';
         }
         return empty($this->errors);
@@ -50,13 +50,13 @@ class RegistrationModel extends Model {
      * @param $userName
      * @return bool|mixed
      */
-    public function requestSelectUserName($userName){
+    public function requestSelectUserName($userName) {
         $sth = $this->db->prepare("SELECT * FROM users WHERE userName=:userName");
         $sth->execute(array('userName' => $userName));
         $mas = $sth->fetch(PDO::FETCH_ASSOC);
-        if(!empty($mas)){
+        if (!empty($mas)) {
             return $mas;
-        } else{
+        } else {
             return false;
         }
     }
@@ -66,13 +66,13 @@ class RegistrationModel extends Model {
      * @param $userEmail
      * @return bool|mixed
      */
-    public function requestSelectUserEmail($userEmail){
+    public function requestSelectUserEmail($userEmail) {
         $sth = $this->db->prepare("SELECT * FROM users WHERE userEmail=:userEmail");
         $sth->execute(array('userEmail' => $userEmail));
         $mas = $sth->fetch(PDO::FETCH_ASSOC);
-        if(!empty($mas)){
+        if (!empty($mas)) {
             return $mas;
-        } else{
+        } else {
             return false;
         }
     }

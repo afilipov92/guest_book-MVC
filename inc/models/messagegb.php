@@ -52,9 +52,9 @@ class MessageGBModel extends Model {
      * @param $pageSize
      * @return array
      */
-    public function getItemsForPage($pageNum = 1, $pageSize = PAGE_SIZE){
+    public function getItemsForPage($pageNum = 1, $pageSize = PAGE_SIZE) {
         $num = ($pageNum - 1) * $pageSize;
-        $mas = $this->db->query("SELECT userName AS '_userName', userEmail AS '_userEmail', messageText, date, userIP, userBrowser FROM guest_book ORDER BY date DESC LIMIT $num, $pageSize", PDO::FETCH_ASSOC)->fetchAll();
+        $mas = $this->db->query("SELECT * FROM " . DB_PREFIX . "gb_messages ORDER BY date DESC LIMIT $num, $pageSize", PDO::FETCH_CLASS, 'MessageGBModel')->fetchAll();
         return $mas;
     }
 }
