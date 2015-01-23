@@ -38,6 +38,10 @@ class BaseController {
         die;
     }
 
+    /**
+     * проверяет была ли отправлена форма
+     * @return bool
+     */
     public function isPost() {
         return !empty($_POST);
     }

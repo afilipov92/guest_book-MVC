@@ -1,6 +1,10 @@
 <?php
 
 class RegistrationController extends BaseController {
+    /**
+     * форма регистрации, если регистрация прошла успешно
+     * отправляет письмо на почту для подтверждения об регистрации
+     */
     public function indexAction() {
         if ($this->session->isLoggedIn()) {
             $this->redirect(BASE_URL);
@@ -28,9 +32,14 @@ class RegistrationController extends BaseController {
             }
         }
         $this->view->msg = $newUser;
-        $this->view->switchOn('registration/form');
+        $this->view->contain('registration/form');
     }
 
+    /**
+     * активация пользователя: проверяет хэш и имя пользователя
+     * @param $userName
+     * @param $hash
+     */
     public function activationAction($userName, $hash) {
         $result = UserModel::getHashDB($userName, $hash);
         if ($result) {

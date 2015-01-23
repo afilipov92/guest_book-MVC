@@ -6,6 +6,10 @@ class UserModel extends Model {
     public $password = "";
     public $passwordConfirm = "";
 
+    /**
+     * проверяет валидность формы
+     * @return bool
+     */
     public function isFormVaild() {
         $this->errors = array();
         if (preg_match('/^[a-zA-Z][a-zA-Z0-9-_\.]{5,20}$/', $this->userName) == 0) {

@@ -7,10 +7,17 @@ class NoteModel extends Model {
     public $date;
     public $id_author;
 
+    /**
+     * устанавливает текущую дату и время
+     */
     public function __construct() {
         $this->date = date('Y-m-d H:i:s');
     }
 
+    /**
+     * проверка валидности формы
+     * @return bool
+     */
     public function isFormValid() {
         $this->errors = array();
 

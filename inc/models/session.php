@@ -23,14 +23,30 @@ class SessionModel extends Model {
 
     /**
      * проверяет пользователя по введенным данным
-     * @param $login
+     * @param $userName
      * @param $password
-     * @return bool
+     * @return bool|mixed
      */
     public function login($userName, $password) {
         $ob = new UserModel();
         $this->user = $ob->requestSelectUser($userName, md5($password));
         return $this->user;
+    }
+
+    /**
+     * устанавливает значение каптчи в сессию
+     * @param $captcha
+     */
+    public static function setCaptcha($captcha){
+        $_SESSION['captcha'] = $captcha;
+    }
+
+    /**
+     * возвращает каптчу, если она была установлена
+     * @return string
+     */
+    public static function getCaptcha(){
+        return isset($_SESSION['captcha']) ? $_SESSION['captcha'] : '';
     }
 
     /**

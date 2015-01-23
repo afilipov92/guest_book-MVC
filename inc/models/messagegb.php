@@ -6,6 +6,9 @@ class MessageGBModel extends Model {
     public $messageText = "";
     public $date;
 
+    /**
+     * устанавливает текущую дату и время
+     */
     public function __construct() {
         $this->date = date('Y-m-d H:i:s');
     }

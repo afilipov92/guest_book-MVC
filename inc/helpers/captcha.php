@@ -17,7 +17,7 @@ class Captcha {
                 $a = $answ + $b;
                 break;
         }
-        $_SESSION['captcha'] = $answ;
+        SessionModel::setCaptcha($answ);
         return $a . $marker . $b;
     }
 
@@ -27,7 +27,7 @@ class Captcha {
      * @return bool
      */
     public static function isValidCaptcha($answ) {
-        $rightAnsw = isset($_SESSION['captcha']) ? $_SESSION['captcha'] : '';
+        $rightAnsw = SessionModel::getCaptcha();
         return $answ == $rightAnsw;
     }
 }

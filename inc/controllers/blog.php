@@ -7,10 +7,13 @@ class BlogController extends BaseController {
     public function indexAction($page = 1) {
         $note = new NoteModel();
         $this->view->notes = $note->getItemsForPage($page);
-        $this->view->switchOn('blog/index');
+        $this->view->contain('blog/index');
     }
 
-    public function addNoteAction($page = 1) {
+    /**
+     * форма добавления записи
+     */
+    public function addNoteAction() {
         if (!$this->session->isLoggedIn()) {
             $this->redirect(BASE_URL);
         }
@@ -37,6 +40,6 @@ class BlogController extends BaseController {
         }
         $this->view->msg = $note;
 
-        $this->view->switchOn('blog/form');
+        $this->view->contain('blog/form');
     }
 }

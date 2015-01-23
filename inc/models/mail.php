@@ -1,6 +1,13 @@
 <?php
 
 class MailModel {
+    /**
+     * генерирует письмо вользователю и отправляет его на
+     * емаил этого пользователя
+     * @param $userName
+     * @param $userEmail
+     * @return bool
+     */
     public static function goMail($userName, $userEmail) {
         $mail = new PHPMailer();
         $message = sprintf('Уважаемый %1$s,<br/>
