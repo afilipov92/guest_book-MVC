@@ -3,10 +3,10 @@
 class MailModel {
     public static function goMail($userName, $userEmail) {
         $mail = new PHPMailer();
-        $message = "Уважаемый " . $userName . ",<br/>
+        $message = sprintf('Уважаемый %1$s,<br/>
             Спасибо за то, что Вы  создали аккаунт у нас. Для того чтобы активировать Ваш профайл нажмите на ссылку ниже:<br/>
-            <a href='http://" . $_SERVER['HTTP_HOST'] . "/guest_book-MVC/registration/activation/" . $userName . "/" . md5($userName) . "' target='_blank'>
-            http://" . $_SERVER['HTTP_HOST'] . "guest_book-MVC/registration" . "</a>";
+            <a href="http://%2$s/guest_book-MVC/registration/activation/%1$s/%3$s" target="_blank">
+            http://%2$s/guest_book-MVC/registration</a>', $userName, $_SERVER['HTTP_HOST'], md5($userName));
         $mail->IsSMTP();
         $mail->SMTPAuth = true;
         $mail->SMTPKeepAlive = true;

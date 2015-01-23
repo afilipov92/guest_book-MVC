@@ -44,4 +44,12 @@ class Model {
         return $this->errors;
     }
 
+    /**
+     * @return mixed
+     */
+    public static  function getAmountRecords(){
+        $amount = self::db()->query("SELECT COUNT(*) AS count FROM " . DB_PREFIX ."gb_messages", PDO::FETCH_ASSOC)->fetch();
+        return $amount['count'];
+    }
+
 }

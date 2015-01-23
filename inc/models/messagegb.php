@@ -51,7 +51,7 @@ class MessageGBModel extends Model {
      * @param $pageSize
      * @return array
      */
-    public function getItemsForPage($pageNum = 1, $pageSize = PAGE_SIZE) {
+    public function getItemsForPage($pageNum = 1, $pageSize = PAGE_SIZE_FOR_GB) {
         $num = ($pageNum - 1) * $pageSize;
         $mas = self::db()->query("SELECT * FROM " . DB_PREFIX . "gb_messages ORDER BY date DESC LIMIT $num, $pageSize", PDO::FETCH_CLASS, 'MessageGBModel')->fetchAll();
         return $mas;

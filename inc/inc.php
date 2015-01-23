@@ -2,7 +2,7 @@
 
 define('DEFAULT_CONTROLLER', 'main');
 define('BASE_URL', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
-define('BASE_PATH', __DIR__ . DIRECTORY_SEPARATOR);
+define('BASE_PATH', __DIR__ . DIRECTORY_SEPARATOR );
 
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'study4');
@@ -17,7 +17,7 @@ define('MAIL_PORT', 465);
 define('MAIL_USERNAME', 'al.oz2015@yandex.ru');
 define('MAIL_PASSWORD', 'Paradise90');
 
-define('PAGE_SIZE', 5);
+define('PAGE_SIZE_FOR_GB', 5);
 
 define('ID_ADMIN', 1);
 define('ID_USER', 2);

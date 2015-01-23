@@ -18,7 +18,8 @@
     <![endif]-->
 
 
-    <script type="text/javascript" src="../helpers/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+    <script type="text/javascript" src="<?= BaseController::url('inc', 'helpers', 'tinymce', 'jscripts', 'tiny_mce', 'tiny_mce.js'); ?>">
+    </script>
     <script type="text/javascript">
         tinyMCE.init({
             mode : "textareas",
@@ -38,9 +39,9 @@
                 <?php
                 if($this->session->isLoggedIn()){
                     echo '<li class="active"><a href="#">'.$this->session->getName().'</a></li>';
-                    echo '<li><a href="' . 'auth/login' . '">Выйти</a></li>';
+                    echo '<li><a href="' . BaseController::url('auth', 'logout') . '">Выйти</a></li>';
                 } else {
-                    echo '<li><a href="' . 'auth/login'.  '">Войти</a></li>';
+                    echo '<li><a href="' . BaseController::url('auth', 'login') . '">Войти</a></li>';
                 }
                 ?></li>
             </ul>

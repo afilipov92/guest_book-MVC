@@ -5,7 +5,7 @@ class RegistrationController extends BaseController {
         if ($this->session->isLoggedIn()) {
             $this->redirect(BASE_URL);
         }
-        $newUser = new RegistrationModel ();
+        $newUser = new UserModel();
         $this->view->result = "";
         if ($this->isPost()) {
             $newUser->setAttributes($_POST);
@@ -32,12 +32,12 @@ class RegistrationController extends BaseController {
     }
 
     public function activationAction($userName, $hash) {
-        $result = RegistrationModel::getHashDB($userName, $hash);
+        $result = UserModel::getHashDB($userName, $hash);
         if ($result) {
-            RegistrationModel::updateHashDB($result['id']);
-            $msg = "Ваша учетная записать активирована<br/><a href='" . BASE_URL . "'>Перейти на главную страницу</a>";
+            UserModel::updateHashDB($result['id']);
+            $msg = sprintf('Ваша учетная записать активирована<br/><a href="%s">Перейти на главную страницу</a>', BASE_URL);
         } else {
-            $msg = "Ошибка активации учетной записи<br/><a href='" . BASE_URL . "'>Перейти на главную страницу</a>";
+            $msg = sprintf('Ошибка активации учетной записи<br/><a href="%s">Перейти на главную страницу</a>', BASE_URL);
         }
         echo $msg;
     }

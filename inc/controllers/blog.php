@@ -11,9 +11,9 @@ class BlogController extends BaseController {
     }
 
     public function addNoteAction($page = 1) {
-       /* if (!$this->session->isLoggedIn()) {
+        if (!$this->session->isLoggedIn()) {
             $this->redirect(BASE_URL);
-        }*/
+        }
 
         $note = new NoteModel();
         $note->id_author = $this->session->getId();
@@ -23,7 +23,7 @@ class BlogController extends BaseController {
             $captcha = Captcha::isValidCaptcha($_POST['captcha']);
             if ($note->isFormValid() AND $captcha) {
                 if ($note->insertNote()) {
-                    $this->view->result = "Запись сохранена";
+                    $this->redirect(BaseController::url('blog', 'index'));
                 } else {
                     $this->view->result = "Ошибка сохранения";
                 }
