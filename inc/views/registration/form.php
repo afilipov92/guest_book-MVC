@@ -36,7 +36,7 @@
 
             <div>
                 <div>
-                    <span><img src="captcha"/></span>
+                    <span><img src="<?= BaseController::url('captcha') ?>"/></span>
                     <input id="captcha" name="captcha" placeholder="Введите ответ" type="text" required>
                 </div>
                 <p data-name="captcha"></p>

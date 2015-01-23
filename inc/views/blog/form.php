@@ -44,7 +44,7 @@
 
             <div class="col-md-4">
                 <div class="input-group">
-                    <span class="input-group-addon" style="padding: 0;"><img src="../captcha"/></span>
+                    <span class="input-group-addon" style="padding: 0;"><img src="<?= BaseController::url('captcha') ?>"/></span>
                     <input id="captcha" name="captcha" class="form-control" placeholder="Введите ответ" type="text"
                            required="">
                 </div>
