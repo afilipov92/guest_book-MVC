@@ -37,7 +37,7 @@ class SessionModel extends Model {
      * устанавливает значение каптчи в сессию
      * @param $captcha
      */
-    public static function setCaptcha($captcha){
+    public static function setCaptcha($captcha) {
         $_SESSION['captcha'] = $captcha;
     }
 
@@ -45,7 +45,7 @@ class SessionModel extends Model {
      * возвращает каптчу, если она была установлена
      * @return string
      */
-    public static function getCaptcha(){
+    public static function getCaptcha() {
         return isset($_SESSION['captcha']) ? $_SESSION['captcha'] : '';
     }
 

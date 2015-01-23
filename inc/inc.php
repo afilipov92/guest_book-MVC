@@ -2,12 +2,12 @@
 
 define('DEFAULT_CONTROLLER', 'main');
 define('BASE_URL', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
-define('BASE_PATH', __DIR__ . DIRECTORY_SEPARATOR );
+define('BASE_PATH', __DIR__ . DIRECTORY_SEPARATOR);
 
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'study4');
 define('DB_USER', 'root');
-define('DB_PASSWORD', '--------');
+define('DB_PASSWORD', 'Blackpearl99');
 define('DB_PREFIX', 'st_');
 
 define('CHAR_SET', 'UTF-8');

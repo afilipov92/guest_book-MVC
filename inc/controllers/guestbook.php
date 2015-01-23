@@ -29,8 +29,8 @@ class GuestBookController extends BaseController {
 
         $messagesCount = Model::getAmountRecords();
         $this->view->currentPage = $page;
-        $this->view->totalPages = $pages = ceil($messagesCount/PAGE_SIZE_FOR_GB);
-        $this->view->pagerLinkTpl = BaseController::url('guestbook','index','{{PAGE}}');
+        $this->view->totalPages = $pages = ceil($messagesCount / PAGE_SIZE_FOR_GB);
+        $this->view->pagerLinkTpl = BaseController::url('guestbook', 'index', '{{PAGE}}');
 
         $this->view->contain('guestbook/index');
     }

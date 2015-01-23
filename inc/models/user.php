@@ -103,10 +103,11 @@ class UserModel extends Model {
      * @param $id
      * @return bool
      */
-    public static function updateHashDB($id){
+    public static function updateHashDB($id) {
         $sth = self::db()->prepare("UPDATE " . DB_PREFIX . "users SET hash=:hash WHERE id=:id");
         return $sth->execute(array('hash' => 'actived', 'id' => $id));
     }
+
     /**
      * выборка по пользователю и паролю
      * @param $userName

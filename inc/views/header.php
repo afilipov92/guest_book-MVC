@@ -18,13 +18,14 @@
     <![endif]-->
 
 
-    <script type="text/javascript" src="<?= BaseController::url('inc', 'helpers', 'tinymce', 'jscripts', 'tiny_mce', 'tiny_mce.js'); ?>">
+    <script type="text/javascript"
+            src="<?= BaseController::url('inc', 'helpers', 'tinymce', 'jscripts', 'tiny_mce', 'tiny_mce.js'); ?>">
     </script>
     <script type="text/javascript">
         tinyMCE.init({
-            mode : "textareas",
-            theme : "simple",
-            elements : "description"
+            mode: "textareas",
+            theme: "simple",
+            elements: "description"
         });
     </script>
 </head>
@@ -37,8 +38,8 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <?php
-                if($this->session->isLoggedIn()){
-                    echo '<li class="active"><a href="#">'.$this->session->getName().'</a></li>';
+                if ($this->session->isLoggedIn()) {
+                    echo '<li class="active"><a href="#">' . $this->session->getName() . '</a></li>';
                     echo '<li><a href="' . BaseController::url('auth', 'logout') . '">Выйти</a></li>';
                 } else {
                     echo '<li><a href="' . BaseController::url('auth', 'login') . '">Войти</a></li>';
