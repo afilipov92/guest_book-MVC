@@ -50,11 +50,20 @@ class SessionModel extends Model {
     }
 
     /**
+     * возвращает ид пользователя, если он залогинен
+     * @return string
+     */
+    public function getId() {
+        return $this->isLoggedIn() ? $_SESSION['id_user'] : '';
+    }
+
+    /**
      * заносит данные в сессию
      */
     public function __destruct() {
         if ($this->user) {
             $_SESSION['userName'] = $this->user['userName'];
+            $_SESSION['id_user'] = $this->user['id'];
         }
     }
 }

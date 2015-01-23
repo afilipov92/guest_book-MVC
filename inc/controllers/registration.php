@@ -30,4 +30,15 @@ class RegistrationController extends BaseController {
         $this->view->msg = $newUser;
         $this->view->switchOn('registration/form');
     }
+
+    public function activationAction($userName, $hash) {
+        $result = RegistrationModel::getHashDB($userName, $hash);
+        if ($result) {
+            RegistrationModel::updateHashDB($result['id']);
+            $msg = "Ваша учетная записать активирована<br/><a href='" . BASE_URL . "'>Перейти на главную страницу</a>";
+        } else {
+            $msg = "Ошибка активации учетной записи<br/><a href='" . BASE_URL . "'>Перейти на главную страницу</a>";
+        }
+        echo $msg;
+    }
 }

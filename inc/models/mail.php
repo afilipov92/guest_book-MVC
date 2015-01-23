@@ -5,8 +5,8 @@ class MailModel {
         $mail = new PHPMailer();
         $message = "Уважаемый " . $userName . ",<br/>
             Спасибо за то, что Вы  создали аккаунт у нас. Для того чтобы активировать Ваш профайл нажмите на ссылку ниже:<br/>
-            <a href='http://" . $_SERVER['HTTP_HOST'] . "/forum/activation/userName=" . $userName . "/hash" . md5($userName) . "' target='_blank'>
-            http://" . $_SERVER['HTTP_HOST'] . "/forum/activation" . "</a>";
+            <a href='http://" . $_SERVER['HTTP_HOST'] . "/guest_book-MVC/registration/activation/" . $userName . "/" . md5($userName) . "' target='_blank'>
+            http://" . $_SERVER['HTTP_HOST'] . "guest_book-MVC/registration" . "</a>";
         $mail->IsSMTP();
         $mail->SMTPAuth = true;
         $mail->SMTPKeepAlive = true;

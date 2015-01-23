@@ -35,7 +35,7 @@ class RegistrationModel extends Model {
      * @return bool
      */
     public function addUser() {
-        $ins = $this->db->prepare('INSERT INTO ' . DB_PREFIX . 'users (userName, userEmail, password, id_status, hash) VALUES (:userName, :userEmail, :password, :id_status, :hash)');
+        $ins = self::db()->prepare('INSERT INTO ' . DB_PREFIX . 'users (userName, userEmail, password, id_status, hash) VALUES (:userName, :userEmail, :password, :id_status, :hash)');
         return $ins->execute(array(
             'userName' => $this->userName,
             'userEmail' => $this->userEmail,
@@ -51,7 +51,7 @@ class RegistrationModel extends Model {
      * @return bool|mixed
      */
     public function requestSelectUserName($userName) {
-        $sth = $this->db->prepare("SELECT * FROM users WHERE userName=:userName");
+        $sth = self::db()->prepare("SELECT * FROM " . DB_PREFIX . "users WHERE userName=:userName");
         $sth->execute(array('userName' => $userName));
         $mas = $sth->fetch(PDO::FETCH_ASSOC);
         if (!empty($mas)) {
@@ -67,7 +67,7 @@ class RegistrationModel extends Model {
      * @return bool|mixed
      */
     public function requestSelectUserEmail($userEmail) {
-        $sth = $this->db->prepare("SELECT * FROM users WHERE userEmail=:userEmail");
+        $sth = self::db()->prepare("SELECT * FROM " . DB_PREFIX . "users WHERE userEmail=:userEmail");
         $sth->execute(array('userEmail' => $userEmail));
         $mas = $sth->fetch(PDO::FETCH_ASSOC);
         if (!empty($mas)) {
@@ -75,5 +75,32 @@ class RegistrationModel extends Model {
         } else {
             return false;
         }
+    }
+
+    /**
+     * Выборка из таблицы users по userName и hash
+     * @param $userName
+     * @param $hash
+     * @return bool|mixed
+     */
+    public static function getHashDB($userName, $hash) {
+        $sth = self::db()->prepare("SELECT * FROM " . DB_PREFIX . "users WHERE userName = :userName AND hash = :hash");
+        $sth->execute(array('userName' => $userName, 'hash' => $hash));
+        $mas = $sth->fetch(PDO::FETCH_ASSOC);
+        if (!empty($mas)) {
+            return $mas;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * обновляет hash в таблице users
+     * @param $id
+     * @return bool
+     */
+    public static function updateHashDB($id){
+        $sth = self::db()->prepare("UPDATE " . DB_PREFIX . "users SET hash=:hash WHERE id=:id");
+        return $sth->execute(array('hash' => 'actived', 'id' => $id));
     }
 }

@@ -1,15 +1,33 @@
 <?php
 
 class Model {
-    protected $db;
+    protected static $db;
     protected $errors;
+    protected static $instance;
 
-    public function __construct() {
+  /*  public function __construct() {
         try {
             $this->db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8;', DB_USER, DB_PASSWORD);
         } catch (PDOException $e) {
             echo 'Подключение не удалось' . $e->getMessage();
         }
+    }*/
+
+    public function __construct() {
+    }
+
+    public static function model()
+    {
+        if (!self::$instance) {
+            self::$instance = new self;
+        }
+    }
+
+    public static function db(){
+        if (!self::$db) {
+            self::$db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8;', DB_USER, DB_PASSWORD);
+        }
+        return self::$db;
     }
 
     /**

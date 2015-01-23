@@ -7,7 +7,6 @@ class MessageGBModel extends Model {
     public $date;
 
     public function __construct() {
-        parent::__construct();
         $this->date = date('Y-m-d H:i:s');
     }
 
@@ -37,7 +36,7 @@ class MessageGBModel extends Model {
      * @return bool
      */
     public function insertMessage() {
-        $ins = $this->db->prepare('INSERT INTO ' . DB_PREFIX . 'gb_messages (userName, userEmail, messageText, date) VALUES (:userName, :userEmail, :messageText, :date)');
+        $ins = self::db()->prepare('INSERT INTO ' . DB_PREFIX . 'gb_messages (userName, userEmail, messageText, date) VALUES (:userName, :userEmail, :messageText, :date)');
         return $ins->execute(array(
             'userName' => $this->userName,
             'messageText' => $this->messageText,
@@ -54,7 +53,7 @@ class MessageGBModel extends Model {
      */
     public function getItemsForPage($pageNum = 1, $pageSize = PAGE_SIZE) {
         $num = ($pageNum - 1) * $pageSize;
-        $mas = $this->db->query("SELECT * FROM " . DB_PREFIX . "gb_messages ORDER BY date DESC LIMIT $num, $pageSize", PDO::FETCH_CLASS, 'MessageGBModel')->fetchAll();
+        $mas = self::db()->query("SELECT * FROM " . DB_PREFIX . "gb_messages ORDER BY date DESC LIMIT $num, $pageSize", PDO::FETCH_CLASS, 'MessageGBModel')->fetchAll();
         return $mas;
     }
 }

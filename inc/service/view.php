@@ -5,9 +5,9 @@ class View {
      * @param $name имя шаблона, который нужно отобразить ( отображается вместе с заголовком и подвалом)
      */
     public function switchOn($name, array $data = array()) {
-        // require 'inc/views/header.php';
+        require 'inc/views/header.php';
         $this->switchOnPartial($name, $data);
-        //  require 'inc/views/footer.php';
+        require 'inc/views/footer.php';
     }
 
     /**
@@ -19,4 +19,5 @@ class View {
         }
         require('inc/views/' . $name . '.php');
     }
+
 }
