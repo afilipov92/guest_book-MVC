@@ -7,7 +7,7 @@ define('BASE_PATH', __DIR__ . DIRECTORY_SEPARATOR);
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'study4');
 define('DB_USER', 'root');
-define('DB_PASSWORD', '------');
+define('DB_PASSWORD', '-----');
 define('DB_PREFIX', 'st_');
 
 define('CHAR_SET', 'UTF-8');
@@ -15,7 +15,7 @@ define('SMTP_SEC', 'ssl');
 define('MAIL_HOST', 'smtp.yandex.ru');
 define('MAIL_PORT', 465);
 define('MAIL_USERNAME', 'al.oz2015@yandex.ru');
-define('MAIL_PASSWORD', 'Paradise90');
+define('MAIL_PASSWORD', '------');
 
 define('PAGE_SIZE_FOR_GB', 5);
 
