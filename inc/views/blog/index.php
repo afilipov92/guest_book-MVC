@@ -13,3 +13,11 @@ if ($this->session->isLoggedIn()) {
         $this->containPartial('blog/parts/note', array('note' => $msg));
     } ?>
 </div>
+
+<?php
+$this->containPartial('common/pager', array(
+    'currentPage' => $this->currentPage,
+    'totalPages' => $this->totalPages,
+    'pagerLinkTpl' => $this->pagerLinkTpl
+));
+?>

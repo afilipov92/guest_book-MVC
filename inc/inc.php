@@ -15,7 +15,7 @@ define('SMTP_SEC', 'ssl');
 define('MAIL_HOST', 'smtp.yandex.ru');
 define('MAIL_PORT', 465);
 define('MAIL_USERNAME', 'al.oz2015@yandex.ru');
-define('MAIL_PASSWORD', '-------');
+define('MAIL_PASSWORD', 'Paradise90');
 
 define('PAGE_SIZE_FOR_GB', 5);
 

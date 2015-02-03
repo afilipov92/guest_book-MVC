@@ -7,6 +7,12 @@ class BlogController extends BaseController {
     public function indexAction($page = 1) {
         $note = new NoteModel();
         $this->view->notes = $note->getItemsForPage($page);
+
+        $notesCount = Model::getAmountRecords('notes');
+        $this->view->currentPage = $page;
+        $this->view->totalPages = $pages = ceil($notesCount / 4);
+        $this->view->pagerLinkTpl = BaseController::url('blog', 'index', '{{PAGE}}');
+
         $this->view->contain('blog/index');
     }
 

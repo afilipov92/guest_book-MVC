@@ -24,8 +24,7 @@
     <script type="text/javascript">
         tinyMCE.init({
             mode: "textareas",
-            theme: "simple",
-            elements: "description"
+            theme: "simple"
         });
     </script>
 </head>

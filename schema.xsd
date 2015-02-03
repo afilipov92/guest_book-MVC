@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="messages" type="Imessages"/>
+
+    <xs:complexType name="Imessages">
+        <xs:sequence>
+            <xs:element name="message" type="Imessage"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Imessage">
+        <xs:sequence>
+            <xs:element name="id" type="xs:positiveInteger"/>
+            <xs:element name="userName" type="xs:string"/>
+            <xs:element name="userEmail" type="xs:string"/>
+            <xs:element name="messageText" type="xs:string"/>
+            <xs:element name="date" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

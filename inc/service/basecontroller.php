@@ -56,6 +56,6 @@ class BaseController {
      */
     public static function url($controller) {
         $args = func_get_args();
-        return BASE_URL . implode("/", $args);
+        return "http://" . $_SERVER['SERVER_NAME'] . BASE_URL . implode("/", $args);
     }
 }

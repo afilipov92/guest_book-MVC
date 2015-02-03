@@ -57,9 +57,9 @@ class NoteModel extends Model {
      * @param int $pageSize
      * @return array
      */
-    public function getItemsForPage($pageNum = 1, $pageSize = PAGE_SIZE) {
+    public function getItemsForPage($pageNum = 1, $pageSize = 4) {
         $num = ($pageNum - 1) * $pageSize;
-        $mas = self::db()->query("SELECT * FROM " . DB_PREFIX . "notes ORDER BY date DESC LIMIT $num, $pageSize", PDO::FETCH_CLASS, 'MessageGBModel')->fetchAll();
+        $mas = self::db()->query("SELECT * FROM " . DB_PREFIX . "notes ORDER BY date DESC LIMIT $num, $pageSize", PDO::FETCH_CLASS, 'NoteModel')->fetchAll();
         return $mas;
     }
 }

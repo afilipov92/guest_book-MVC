@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages>
+  <message>
+    <id>1</id>
+    <userName>administrator</userName>
+    <userEmail>alexandr@gmail.com</userEmail>
+    <messageText><![CDATA[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]]></messageText>
+    <date>2015-01-16 20:26:03</date>
+  </message>
+  <message>
+    <id>2</id>
+    <userName>alexqwe</userName>
+    <userEmail>asd@df.fg</userEmail>
+    <messageText><![CDATA[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]]></messageText>
+    <date>2015-01-23 17:32:37</date>
+  </message>
+  <message>
+    <id>3</id>
+    <userName>alexandrfilipov</userName>
+    <userEmail>alexandr@gmail.com</userEmail>
+    <messageText><![CDATA[switchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;]]></messageText>
+    <date>2015-01-23 18:25:49</date>
+  </message>
+  <message>
+    <id>4</id>
+    <userName>alexandrfilipov</userName>
+    <userEmail>alexandr@gmail.com</userEmail>
+    <messageText><![CDATA[switchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;]]></messageText>
+    <date>2015-01-23 18:25:58</date>
+  </message>
+  <message>
+    <id>5</id>
+    <userName>alexandrfilipov</userName>
+    <userEmail>alexandr@gmail.com</userEmail>
+    <messageText><![CDATA[switchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;]]></messageText>
+    <date>2015-01-23 18:26:03</date>
+  </message>
+  <message>
+    <id>6</id>
+    <userName>alexandrfilipov</userName>
+    <userEmail>alexandr@gmail.com</userEmail>
+    <messageText><![CDATA[switchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartialswitchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;switchOnPartial&nbsp;]]></messageText>
+    <date>2015-01-23 18:26:10</date>
+  </message>
+  <message>
+    <id>7</id>
+    <userName>administrator</userName>
+    <userEmail>alexandr@gmail.com</userEmail>
+    <messageText><![CDATA[<strong>Привет</strong><em> хаюшки </em><u>hello</u>]]></messageText>
+    <date>2015-02-02 13:02:19</date>
+  </message>
+</messages>

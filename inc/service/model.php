@@ -45,10 +45,11 @@ class Model {
 
     /**
      * подсчет количества записей в таблице
+     * @param $table
      * @return mixed
      */
-    public static function getAmountRecords() {
-        $amount = self::db()->query("SELECT COUNT(*) AS count FROM " . DB_PREFIX . "gb_messages", PDO::FETCH_ASSOC)->fetch();
+    public static function getAmountRecords($table) {
+        $amount = self::db()->query("SELECT COUNT(*) AS count FROM " . DB_PREFIX . $table, PDO::FETCH_ASSOC)->fetch();
         return $amount['count'];
     }
 

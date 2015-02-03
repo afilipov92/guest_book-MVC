@@ -59,4 +59,39 @@ class MessageGBModel extends Model {
         $mas = self::db()->query("SELECT * FROM " . DB_PREFIX . "gb_messages ORDER BY date DESC LIMIT $num, $pageSize", PDO::FETCH_CLASS, 'MessageGBModel')->fetchAll();
         return $mas;
     }
+
+    /**
+     * выборка всех сообщений из базы данных
+     * @return array
+     */
+    public function getItems() {
+        $sel = self::db()->query("SELECT * FROM " . DB_PREFIX . "gb_messages", PDO::FETCH_ASSOC)->fetchAll();
+        return $sel;
+    }
+
+    /**
+     * удаление всех записей из базы
+     * @return bool
+     */
+    public function deleteMessages() {
+        $res = self::db()->prepare("DELETE FROM " . DB_PREFIX . "gb_messages");
+        return $res->execute();
+    }
+
+    /**
+     * добавление всех записей в базу
+     * @param $messages
+     */
+    public function importMessages($messages) {
+        foreach ($messages->message as $message) {
+            $ins = self::db()->prepare('INSERT INTO ' . DB_PREFIX . 'gb_messages (id, userName, userEmail, messageText, date) VALUES (:id, :userName, :userEmail, :messageText, :date)');
+            $ins->execute(array(
+                "id" => $message->id,
+                "userName" => $message->userName,
+                "userEmail" => $message->userEmail,
+                "messageText" => $message->messageText,
+                "date" => $message->date
+            ));
+        }
+    }
 }
